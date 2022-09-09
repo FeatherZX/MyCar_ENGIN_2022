@@ -543,6 +543,7 @@ void set_horizon()
               test_functions
 ******************************************/
 
+//从起点至抓取完第一个物块
 void command_sets_1()
 {
   through_horizen(5, forward, 40);
@@ -557,9 +558,9 @@ void command_sets_1()
   delay(1000);
 }
 
+//抓取完第一个物块至放下第一个物块
 void command_sets_2()
 {
-  // 假设对完线，开始测试旋转
   delay(1000);
   micro_movement(backward, 40, 400);
   delay(2000);
@@ -575,15 +576,16 @@ void command_sets_2()
   delay(2000);
   set_middle(moveLeft, 40, 2000);
   delay(2000);
-  micro_movement(moveRight, 40, 400); // delay_time = ___ waited to be set
+  micro_movement(moveRight, 40, 400); // delay_time probably had been set
   delay(2000);
   set_horizon();
   delay(1000);
-  //release();   //没写
+  //release();   //放下物块，没写
   delay(1000);
 }
 
-void command_sets_3()  //到
+//放下第一个物块至抓取第二个物块
+void command_sets_3()  
 {
   delay(1000);
   micro_movement(backward, 40, 400);
@@ -604,6 +606,7 @@ void command_sets_3()  //到
   delay(1000);
 };
 
+//抓取完第二个物块至放下第二个物块
 void command_sets_4()
 {
   micro_movement(backward, 40, 400);
@@ -626,14 +629,15 @@ void command_sets_4()
   delay(2000);
   set_middle(moveRight, 40, 2000);
   delay(2000);
-  micro_movement(moveLeft, 40, 1200); // delay_time = ___ waited to be set
+  micro_movement(moveLeft, 40, 1200); // delay_time probably had been set
   delay(2000);
   set_horizon();
   delay(1000);
-  //release();    //还没写
+  //release();   //放下物块，没写
   delay(1000);
 }
 
+//放下第二个物块至终点
 void command_sets_5()
 {
   micro_movement(backward, 40, 400);
@@ -686,15 +690,15 @@ void setup()
 
 void loop()
 {
-  command_sets_1();
+  command_sets_1();    //从起点至抓取完第一个物块
   
-  command_sets_2();
+  command_sets_2();    //抓取完第一个物块至放下第一个物块
   
-  command_sets_3();
+  command_sets_3();    //放下第一个物块至抓取第二个物块
   
-  command_sets_4();
+  command_sets_4();    //抓取完第二个物块至放下第二个物块
   
-  command_sets_5();
+  command_sets_5();    //放下第二个物块至终点
   
 
   // through_horizen(5, forward, 40);
